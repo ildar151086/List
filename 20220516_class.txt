@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+
+
+
+class ListT {
+    float Value;
+    ListT* next;
+public:
+    ListT() {
+        Value = 0;
+        //next = top->next;
+    };
+    ~ListT() {
+        if (next != nullptr) {
+            delete next;
+        }
+    };
+    void push(float valueUser) {
+        ListT* temp = new ListT;
+        temp->Value = valueUser;
+        temp->next = top;
+        top = temp;
+    };
+    void show() {
+        ListT* temp = top;
+        while (temp != nullptr) {
+            cout << temp->Value;
+            temp = temp->next;
+        }
+    }
+};
+
+ListT* top = nullptr;
+
+
+int main()
+{
+    setlocale(LC_ALL, "RUS");
+    ListT listArr;
+
+    for (int i = 0; i < 10; i++) {
+        listArr.push(i);
+    };
+    listArr.show();
+}
